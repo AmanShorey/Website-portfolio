@@ -417,16 +417,25 @@ p {
 
 .contact-icon {
     font-size: 2rem;
-    color: var(--text-light);
-    transition: all 0.3s ease;
+    color: #ffffff;
+    /* Pure white */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Smooth Apple-like ease */
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    /* Soft, elegant glow - subtle but effective on dark bg */
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+    opacity: 0.9;
 }
 
 .contact-icon:hover {
-    color: var(--primary-color);
-    transform: translateY(-3px) scale(1.1);
+    color: #ffffff;
+    transform: scale(1.15);
+    /* Slight scale up without translateY */
+    opacity: 1;
+    /* Stronger, crisp glow on hover */
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
 }
 
 /* 
