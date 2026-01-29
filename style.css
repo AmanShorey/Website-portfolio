@@ -324,16 +324,58 @@ p {
     padding-bottom: 0;
 }
 
+/* Timeline Dot - Default State */
 .timeline-item::before {
     content: '';
     position: absolute;
     left: -9px;
-    top: 0;
+    top: 5px;
+    /* Aligned with title roughly */
     width: 16px;
     height: 16px;
     background: var(--bg-body);
     border: 4px solid var(--primary-color);
     border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+/* Color Classes Definitions */
+.experience-blue {
+    --item-color: #3b82f6;
+}
+
+.experience-gold {
+    --item-color: #fbbf24;
+}
+
+.experience-red {
+    --item-color: #ef4444;
+}
+
+/* Interactive Hover Logic: Link Title Hover -> Dot Change */
+/* Using :has() to style the dot when the title is hovered */
+@supports selector(:has(*)) {
+    .timeline-item:has(.timeline-role:hover)::before {
+        border-color: var(--item-color, var(--primary-color));
+        background-color: var(--item-color, var(--primary-color));
+        box-shadow: 0 0 10px var(--item-color, var(--primary-color));
+    }
+}
+
+/* Fallback: Hovering the title itself changes its own color */
+.timeline-role {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+    cursor: default;
+    /* Imply interactivity */
+}
+
+/* When hovering the role, change the role color */
+.timeline-item .timeline-role:hover {
+    color: var(--item-color, var(--primary-color));
 }
 
 .timeline-date {
@@ -344,16 +386,18 @@ p {
     display: block;
 }
 
-.timeline-role {
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
-    color: var(--text-dark);
-}
-
 .timeline-company {
     font-size: 1.1rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.timeline-company:hover {
+    color: var(--primary-hover);
+    border-bottom-color: var(--primary-hover);
 }
 
 .timeline-desc {
