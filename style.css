@@ -388,7 +388,8 @@ p {
 
 .timeline-company {
     font-size: 1.1rem;
-    color: var(--primary-color);
+    /* Use the item color (blue/gold/red) if defined, else fallback to primary */
+    color: var(--item-color, var(--primary-color));
     margin-bottom: 1rem;
     display: inline-block;
     border-bottom: 1px solid transparent;
@@ -396,8 +397,21 @@ p {
 }
 
 .timeline-company:hover {
-    color: var(--primary-hover);
-    border-bottom-color: var(--primary-hover);
+    /* Make the color slightly brighter/more vivid on hover */
+    filter: brightness(1.3);
+    border-bottom-color: currentColor;
+}
+
+/* Education Links */
+.edu-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.edu-link:hover {
+    color: #a855f7;
+    /* Premium Purple */
 }
 
 .timeline-desc {
@@ -418,6 +432,17 @@ p {
     border-radius: var(--radius);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
+}
+
+.edu-crest {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    /* Optional: if it's circular */
+    background: white;
+    /* Ensure transparency looks good */
+    padding: 2px;
 }
 
 .skills-list {
