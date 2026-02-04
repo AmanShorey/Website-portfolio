@@ -43,18 +43,131 @@ body {
     min-height: 100vh;
 }
 
-/* Page Backgrounds */
-/* Common background settings for all pages with dark overlay */
-.page-home,
-.page-experience,
-.page-education {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url('background.png');
+/* Page Backgrounds - Animated */
+/* We use pseudo-elements on body to separate image and overlay */
+
+body {
+    position: relative;
+    /* Ensure body is a positioning context if needed */
+    background-color: var(--bg-body);
+    /* Fallback */
+}
+
+/* The Background Image Layer (Animated) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Increased z-index to be above body background color but below content */
+    z-index: -10;
+
+    background-image: url('background.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     background-repeat: no-repeat;
+
+    /* Stronger animation: zoom + slight shift */
+    animation: background-drift 40s ease-in-out infinite alternate;
+}
+
+/* The Dark Overlay Layer (Static) */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    /* Above image, below content */
+
+    /* Slightly more transparent to see the image better */
+    background: linear-gradient(rgba(10, 15, 30, 0.6), rgba(10, 15, 30, 0.7));
+    pointer-events: none;
+}
+
+@keyframes background-drift {
+    0% {
+        transform: scale(1.0) translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: scale(1.15) translate3d(-3%, -2%, 0);
+    }
+
+    100% {
+        transform: scale(1.1) translate3d(2%, 1%, 0);
+    }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    body::before {
+        animation: none;
+    }
+}
+
+/* Remove old specific class rules as they are superseded by body::before */
+.page-about-me,
+.page-experience,
+.page-education {
+    background: none;
+}
+
+/* Particle System for Comet Effect - More Visible */
+.particle {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -2;
+    /* Above overlay */
+    filter: blur(0.5px);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Comet tail effect - More obvious */
+.particle::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(-90deg, rgba(255, 255, 255, 0.4), transparent);
+    top: 50%;
+    left: -80px;
+    transform: translateY(-50%);
+}
+
+@keyframes drift {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    85% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate3d(var(--drift-x), var(--drift-y), 0);
+        opacity: 0;
+    }
+}
+
+/* Disable particles for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .particle {
+        display: none;
+    }
 }
 
 a {
@@ -353,6 +466,11 @@ p {
     --item-color: #ef4444;
 }
 
+.experience-pink {
+    --item-color: #ec4899;
+    /* Vibrant Pink */
+}
+
 /* Interactive Hover Logic: Link Title Hover -> Dot Change */
 /* Using :has() to style the dot when the title is hovered */
 @supports selector(:has(*)) {
@@ -463,6 +581,49 @@ p {
     border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
+/* Refined Languages Grid */
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+}
+
+.lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.lang-item:hover {
+    border-bottom-color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.lang-name {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.lang-level {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.75rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 480px) {
+    .languages-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* 
   Contact Section 
 */
@@ -556,5 +717,162 @@ p {
 
     .hero-title {
         font-size: 2rem;
+    }
+}
+
+/* 
+  Custom Cursor Styles 
+*/
+
+/* Default State: Hidden (for touch devices) */
+.custom-cursor-dot,
+.custom-cursor-ring {
+    display: none;
+}
+
+/* Enable only on devices that support hover AND have a fine pointer (mouse) */
+@media (hover: hover) and (pointer: fine) {
+
+    body,
+    a,
+    button,
+    .clickable {
+        cursor: none !important;
+    }
+
+    .custom-cursor-dot,
+    .custom-cursor-ring {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 9999;
+        border-radius: 50%;
+        transform: translate(-100px, -100px);
+        /* Initial off-screen */
+    }
+}
+
+/* The inner dot */
+.custom-cursor-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #00f3ff;
+    /* Cyan neon default */
+    margin-left: -3px;
+    /* Center alignment */
+    margin-top: -3px;
+    transition: width 0.3s, height 0.3s, background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
+    /* Cyan glow */
+}
+
+/* The trailing outer ring */
+.custom-cursor-ring {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-left: -16px;
+    /* Center alignment */
+    margin-top: -16px;
+    transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(2px);
+    /* Glass effect */
+}
+
+/* Hover State - General */
+.custom-cursor-dot.hover {
+    width: 4px;
+    height: 4px;
+    margin-left: -2px;
+    margin-top: -2px;
+    background-color: transparent;
+    /* Dot disappears or fades */
+    box-shadow: none;
+}
+
+.custom-cursor-ring.hover {
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    margin-top: -25px;
+    border-color: rgba(0, 243, 255, 0.8);
+    background-color: rgba(0, 243, 255, 0.05);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+/* Active (Click) State */
+.custom-cursor-ring.active {
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    margin-top: -12px;
+    border-color: #00f3ff;
+    background-color: rgba(0, 243, 255, 0.1);
+}
+
+/* COLOR VARIANTS */
+
+/* Blue */
+.custom-cursor-ring.cursor-blue.hover {
+    border-color: #3b82f6;
+    background-color: rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.custom-cursor-dot.cursor-blue {
+    background-color: #3b82f6;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+}
+
+/* Gold */
+.custom-cursor-ring.cursor-gold.hover {
+    border-color: #fbbf24;
+    background-color: rgba(251, 191, 36, 0.1);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+.custom-cursor-dot.cursor-gold {
+    background-color: #fbbf24;
+    box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+}
+
+/* Pink */
+.custom-cursor-ring.cursor-pink.hover {
+    border-color: #ec4899;
+    background-color: rgba(236, 72, 153, 0.1);
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+}
+
+.custom-cursor-dot.cursor-pink {
+    background-color: #ec4899;
+    box-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
+}
+
+/* Red */
+.custom-cursor-ring.cursor-red.hover {
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.custom-cursor-dot.cursor-red {
+    background-color: #ef4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+}
+
+/* Hide custom cursor on touch devices */
+@media (pointer: coarse) {
+
+    .custom-cursor-dot,
+    .custom-cursor-ring {
+        display: none !important;
+    }
+
+    body,
+    a,
+    button {
+        cursor: auto !important;
     }
 }
