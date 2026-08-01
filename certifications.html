@@ -7,6 +7,132 @@
     <title>Licences & Certifications | Aman Shorey</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .cert-logo {
+            width: 56px;
+            height: 56px;
+            object-fit: contain;
+            border-radius: 6px;
+            background: #ffffff;
+            padding: 6px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            flex-shrink: 0;
+        }
+
+        .cert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.35rem;
+            line-height: 1.3;
+        }
+
+        .cert-org {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.35rem;
+            display: inline-block;
+        }
+
+        .cert-meta {
+            color: var(--text-light);
+            font-size: 0.88rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-id {
+            color: var(--text-light);
+            font-size: 0.82rem;
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            word-break: break-all;
+            margin-top: 0.25rem;
+        }
+
+        .cert-footer {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .btn-credential {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.15rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border-radius: 2rem;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn-credential:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .badge-unavailable {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.9rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 2rem;
+        }
+
+        @media (max-width: 480px) {
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body class="page-education">
@@ -28,158 +154,132 @@
             <div class="container">
                 <h1 class="section-title">Licences & Certifications</h1>
 
-                <div class="edu-grid" style="max-width: 900px; margin: 0 auto;">
+                <div class="cert-grid">
 
-                    <!-- Cert 1: AmplifyME Mergers & Acquisitions -->
-                    <div class="edu-card">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
-                            <div>
-                                <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Mergers And Acquisition</h3>
-                                <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.25rem;">
-                                    <a href="https://amplifyme.com" target="_blank" rel="noopener noreferrer" class="edu-link">AmplifyME</a>
-                                </p>
-                                <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.25rem;">
-                                    Issued Jul 2026 · Expired Jul 2026
-                                </p>
-                                <p style="color: var(--text-light); font-size: 0.85rem; font-family: monospace;">
-                                    Credential ID: bc58a07a-e1bd-4bee-af6d-13c100feb6be
-                                </p>
+                    <!-- Cert 1: AmplifyME Mergers and Acquisitions -->
+                    <div class="cert-card">
+                        <div>
+                            <div class="cert-header">
+                                <div>
+                                    <h3 class="cert-title">Mergers and Acquisitions</h3>
+                                    <a href="https://amplifyme.com" target="_blank" rel="noopener noreferrer" class="cert-org">AmplifyME</a>
+                                    <p class="cert-meta">Issued July 2026</p>
+                                    <p class="cert-id">Credential ID: bc58a07a-e1bd-4bee-af6d-13c100feb6be</p>
+                                </div>
+                                <img src="https://logo.clearbit.com/amplifyme.com" alt="AmplifyME Logo" class="cert-logo" onerror="this.onerror=null; this.src='https://amplifyme.com/favicon.ico';">
                             </div>
-                            <img src="https://logo.clearbit.com/amplifyme.com" alt="AmplifyME Logo" style="width: 52px; height: 52px; object-fit: contain; border-radius: 6px; background: #ffffff; padding: 4px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));" onerror="this.onerror=null; this.src='https://amplifyme.com/favicon.ico';">
                         </div>
-                        <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                            <button onclick="showCredentialModal('Mergers And Acquisition', 'AmplifyME', 'Jul 2026', 'Jul 2026', 'bc58a07a-e1bd-4bee-af6d-13c100feb6be', 'https://amplifyme.com')" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem;">
-                                Show Credential <i class="fas fa-certificate" style="margin-left: 0.4rem;"></i>
-                            </button>
+                        <div class="cert-footer">
+                            <a href="https://my.amplifyme.com/certificate/bc58a07a-e1bd-4bee-af6d-13c100feb6be" target="_blank" rel="noopener noreferrer" class="btn-credential">
+                                Show Credential <i class="fas fa-external-link-alt"></i>
+                            </a>
                         </div>
                     </div>
 
                     <!-- Cert 2: AmplifyME Finance Accelerator -->
-                    <div class="edu-card">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
-                            <div>
-                                <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Finance Accelerator</h3>
-                                <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.25rem;">
-                                    <a href="https://amplifyme.com" target="_blank" rel="noopener noreferrer" class="edu-link">AmplifyME</a>
-                                </p>
-                                <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.25rem;">
-                                    Issued Jul 2026 · Expired Jul 2026
-                                </p>
-                                <p style="color: var(--text-light); font-size: 0.85rem; font-family: monospace;">
-                                    Credential ID: 7fe8a653-7e89-4788-9fbc-30707edfc9f0
-                                </p>
+                    <div class="cert-card">
+                        <div>
+                            <div class="cert-header">
+                                <div>
+                                    <h3 class="cert-title">Finance Accelerator</h3>
+                                    <a href="https://amplifyme.com" target="_blank" rel="noopener noreferrer" class="cert-org">AmplifyME</a>
+                                    <p class="cert-meta">Issued July 2026</p>
+                                    <p class="cert-id">Credential ID: 7fe8a653-7e89-4788-9fbc-30707edfc9f0</p>
+                                </div>
+                                <img src="https://logo.clearbit.com/amplifyme.com" alt="AmplifyME Logo" class="cert-logo" onerror="this.onerror=null; this.src='https://amplifyme.com/favicon.ico';">
                             </div>
-                            <img src="https://logo.clearbit.com/amplifyme.com" alt="AmplifyME Logo" style="width: 52px; height: 52px; object-fit: contain; border-radius: 6px; background: #ffffff; padding: 4px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));" onerror="this.onerror=null; this.src='https://amplifyme.com/favicon.ico';">
                         </div>
-                        <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                            <button onclick="showCredentialModal('Finance Accelerator', 'AmplifyME', 'Jul 2026', 'Jul 2026', '7fe8a653-7e89-4788-9fbc-30707edfc9f0', 'https://amplifyme.com')" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem;">
-                                Show Credential <i class="fas fa-certificate" style="margin-left: 0.4rem;"></i>
-                            </button>
+                        <div class="cert-footer">
+                            <a href="https://my.amplifyme.com/certificate/7fe8a653-7e89-4788-9fbc-30707edfc9f0" target="_blank" rel="noopener noreferrer" class="btn-credential">
+                                Show Credential <i class="fas fa-external-link-alt"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Cert 3: Forage Goldman Sachs - Risk Job Simulation -->
-                    <div class="edu-card">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
-                            <div>
-                                <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Goldman Sachs - Risk Job Simulation</h3>
-                                <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.25rem;">
-                                    <a href="https://www.theforage.com" target="_blank" rel="noopener noreferrer" class="edu-link">Forage</a>
-                                </p>
-                                <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.25rem;">
-                                    Issued Jul 2026 · Expired Jul 2026
-                                </p>
-                                <p style="color: var(--text-light); font-size: 0.85rem; font-family: monospace;">
-                                    Credential ID: 6a664d47d96effc901e0f343
-                                </p>
+                    <!-- Cert 3: Forage Goldman Sachs – Risk Job Simulation -->
+                    <div class="cert-card">
+                        <div>
+                            <div class="cert-header">
+                                <div>
+                                    <h3 class="cert-title">Goldman Sachs – Risk Job Simulation</h3>
+                                    <a href="https://www.theforage.com" target="_blank" rel="noopener noreferrer" class="cert-org">Forage</a>
+                                    <p class="cert-meta">Issued July 2026</p>
+                                    <p class="cert-id">Credential ID: 6a664d47d96effc901e0f343</p>
+                                </div>
+                                <img src="goldman_sachs_logo.png" alt="Goldman Sachs / Forage Logo" class="cert-logo">
                             </div>
-                            <img src="https://logo.clearbit.com/theforage.com" alt="Forage Logo" style="width: 52px; height: 52px; object-fit: contain; border-radius: 6px; background: #ffffff; padding: 4px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));" onerror="this.onerror=null; this.src='https://www.theforage.com/favicon.ico';">
                         </div>
-                        <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                            <button onclick="showCredentialModal('Goldman Sachs - Risk Job Simulation', 'Forage / Goldman Sachs', 'Jul 2026', 'Jul 2026', '6a664d47d96effc901e0f343', 'https://www.theforage.com')" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem;">
-                                Show Credential <i class="fas fa-certificate" style="margin-left: 0.4rem;"></i>
-                            </button>
+                        <div class="cert-footer">
+                            <a href="https://www.theforage.com/completion-certificates/MBA4MnZTNFEoJZGnk/ETGMhLB5eCrYjcH8o_MBA4MnZTNFEoJZGnk_6a562a1fc85b47e1f2f9156f_1785091941508_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="btn-credential">
+                                Show Credential <i class="fas fa-external-link-alt"></i>
+                            </a>
                         </div>
                     </div>
 
                     <!-- Cert 4: Bloomberg Market Concepts -->
-                    <div class="edu-card">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
-                            <div>
-                                <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Bloomberg Market Concepts</h3>
-                                <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.25rem;">
-                                    <a href="https://www.bloomberg.com" target="_blank" rel="noopener noreferrer" class="edu-link">Bloomberg</a>
-                                </p>
-                                <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.25rem;">
-                                    Issued Jun 2026
-                                </p>
-                                <p style="color: var(--text-light); font-size: 0.85rem; font-family: monospace; margin-bottom: 0.75rem;">
-                                    Credential ID: k56iPaN1ircWwLzidSN7gomk
-                                </p>
-                                <div class="skills-list" style="margin-top: 0.5rem;">
-                                    <span class="skill-badge">Financial Markets</span>
-                                    <span class="skill-badge">Capital Markets</span>
-                                    <span class="skill-badge">Economic Indicators</span>
+                    <div class="cert-card">
+                        <div>
+                            <div class="cert-header">
+                                <div>
+                                    <h3 class="cert-title">Bloomberg Market Concepts</h3>
+                                    <a href="https://www.bloomberg.com" target="_blank" rel="noopener noreferrer" class="cert-org">Bloomberg</a>
+                                    <p class="cert-meta">Issued June 2026</p>
+                                    <p class="cert-id">Credential ID: k56iPaN1ircWwLzidSN7gomk</p>
                                 </div>
+                                <img src="https://logo.clearbit.com/bloomberg.com" alt="Bloomberg Logo" class="cert-logo" onerror="this.onerror=null; this.src='https://www.bloomberg.com/favicon.ico';">
                             </div>
-                            <img src="https://logo.clearbit.com/bloomberg.com" alt="Bloomberg Logo" style="width: 52px; height: 52px; object-fit: contain; border-radius: 6px; background: #ffffff; padding: 4px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));" onerror="this.onerror=null; this.src='https://www.bloomberg.com/favicon.ico';">
+                            <div class="skills-list" style="margin-top: 0.75rem;">
+                                <span class="skill-badge">Financial Markets</span>
+                                <span class="skill-badge">Capital Markets</span>
+                            </div>
                         </div>
-                        <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                            <button onclick="showCredentialModal('Bloomberg Market Concepts', 'Bloomberg', 'Jun 2026', 'No Expiration', 'k56iPaN1ircWwLzidSN7gomk', 'https://portal.bloombergforeducation.com')" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem;">
-                                Show Credential <i class="fas fa-certificate" style="margin-left: 0.4rem;"></i>
-                            </button>
+                        <div class="cert-footer">
+                            <a href="https://portal.bloombergforeducation.com/certificates/k56iPaN1ircWwLzidSN7gomk" target="_blank" rel="noopener noreferrer" class="btn-credential">
+                                Show Credential <i class="fas fa-external-link-alt"></i>
+                            </a>
                         </div>
                     </div>
 
                     <!-- Cert 5: Bloomberg Finance Fundamentals -->
-                    <div class="edu-card">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
-                            <div>
-                                <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Bloomberg Finance Fundamentals</h3>
-                                <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.25rem;">
-                                    <a href="https://www.bloomberg.com" target="_blank" rel="noopener noreferrer" class="edu-link">Bloomberg</a>
-                                </p>
-                                <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.25rem;">
-                                    Issued Jun 2026
-                                </p>
-                                <p style="color: var(--text-light); font-size: 0.85rem; font-family: monospace; margin-bottom: 0.75rem;">
-                                    Credential ID: SvgT9qwAtrPWDaeZcwnpvg9x
-                                </p>
-                                <div class="skills-list" style="margin-top: 0.5rem;">
-                                    <span class="skill-badge">Financial Analysis</span>
-                                    <span class="skill-badge">Investment Analysis</span>
+                    <div class="cert-card">
+                        <div>
+                            <div class="cert-header">
+                                <div>
+                                    <h3 class="cert-title">Bloomberg Finance Fundamentals</h3>
+                                    <a href="https://www.bloomberg.com" target="_blank" rel="noopener noreferrer" class="cert-org">Bloomberg</a>
+                                    <p class="cert-meta">Issued June 2026</p>
+                                    <p class="cert-id">Credential ID: SvgT9qwAtrPWDaeZcwnpvg9x</p>
                                 </div>
+                                <img src="https://logo.clearbit.com/bloomberg.com" alt="Bloomberg Logo" class="cert-logo" onerror="this.onerror=null; this.src='https://www.bloomberg.com/favicon.ico';">
                             </div>
-                            <img src="https://logo.clearbit.com/bloomberg.com" alt="Bloomberg Logo" style="width: 52px; height: 52px; object-fit: contain; border-radius: 6px; background: #ffffff; padding: 4px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));" onerror="this.onerror=null; this.src='https://www.bloomberg.com/favicon.ico';">
+                            <div class="skills-list" style="margin-top: 0.75rem;">
+                                <span class="skill-badge">Financial Analysis</span>
+                                <span class="skill-badge">Investment Analysis</span>
+                            </div>
                         </div>
-                        <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                            <button onclick="showCredentialModal('Bloomberg Finance Fundamentals', 'Bloomberg', 'Jun 2026', 'No Expiration', 'SvgT9qwAtrPWDaeZcwnpvg9x', 'https://portal.bloombergforeducation.com')" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem;">
-                                Show Credential <i class="fas fa-certificate" style="margin-left: 0.4rem;"></i>
-                            </button>
+                        <div class="cert-footer">
+                            <a href="https://portal.bloombergforeducation.com/certificates/SvgT9qwAtrPWDaeZcwnpvg9x" target="_blank" rel="noopener noreferrer" class="btn-credential">
+                                Show Credential <i class="fas fa-external-link-alt"></i>
+                            </a>
                         </div>
                     </div>
 
                     <!-- Cert 6: DELF B1 – French Language Certificate (CEFR) -->
-                    <div class="edu-card">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
-                            <div>
-                                <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">DELF B1 – French Language Certificate (CEFR)</h3>
-                                <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.25rem;">
-                                    <a href="https://www.france-education-international.fr" target="_blank" rel="noopener noreferrer" class="edu-link">France Éducation international</a>
-                                </p>
-                                <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.25rem;">
-                                    Issued May 2023
-                                </p>
-                                <div class="skills-list" style="margin-top: 0.5rem;">
-                                    <span class="skill-badge">French (Fluent / CEFR B1)</span>
+                    <div class="cert-card">
+                        <div>
+                            <div class="cert-header">
+                                <div>
+                                    <h3 class="cert-title">DELF B1 – French Language Certificate (CEFR)</h3>
+                                    <a href="https://www.france-education-international.fr" target="_blank" rel="noopener noreferrer" class="cert-org">France Éducation International</a>
+                                    <p class="cert-meta">Issued May 2023</p>
                                 </div>
+                                <img src="delf_logo.png" alt="France Éducation International Logo" class="cert-logo" style="width: 72px; padding: 4px;">
                             </div>
-                            <img src="delf_logo.png" alt="France Éducation international Logo" style="width: 130px; height: auto; max-height: 52px; object-fit: contain; border-radius: 6px; background: #ffffff; padding: 6px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
                         </div>
-                        <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                            <button onclick="showCredentialModal('DELF B1 – French Language Certificate (CEFR)', 'France Éducation international', 'May 2023', 'No Expiration', 'Official Language Certification (CEFR B1)', 'https://www.france-education-international.fr')" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem;">
-                                Show Credential <i class="fas fa-certificate" style="margin-left: 0.4rem;"></i>
-                            </button>
+                        <div class="cert-footer">
+                            <span class="badge-unavailable">
+                                <i class="fas fa-info-circle"></i> Credential available upon request
+                            </span>
                         </div>
                     </div>
 
@@ -187,50 +287,6 @@
             </div>
         </section>
     </main>
-
-    <!-- Credential Verification Modal -->
-    <div id="credentialModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 99999; justify-content: center; align-items: center; padding: 1.5rem;">
-        <div style="background: rgba(30, 41, 59, 0.95); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; max-width: 500px; width: 100%; padding: 2rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); position: relative; text-align: left;">
-            <button onclick="closeCredentialModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--text-light); font-size: 1.5rem; cursor: pointer;">&times;</button>
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-                <i class="fas fa-award" style="font-size: 1.8rem; color: var(--primary-color);"></i>
-                <h2 id="modalTitle" style="font-size: 1.4rem; color: #ffffff; margin: 0;">Credential Verification</h2>
-            </div>
-            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem; margin-top: 0.5rem;">
-                <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-light);"><strong>Issuing Organisation:</strong> <span id="modalIssuer" style="color: #ffffff;"></span></p>
-                <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-light);"><strong>Issue Date:</strong> <span id="modalIssueDate" style="color: #ffffff;"></span></p>
-                <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-light);"><strong>Expiration Date:</strong> <span id="modalExpDate" style="color: #ffffff;"></span></p>
-                <p style="margin-bottom: 1rem; font-size: 0.95rem; color: var(--text-light);"><strong>Credential ID:</strong> <br><span id="modalCredId" style="color: #60a5fa; font-family: monospace; font-size: 0.9rem; word-break: break-all;"></span></p>
-            </div>
-            <div style="display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: flex-end;">
-                <button onclick="closeCredentialModal()" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Close</button>
-                <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer" class="btn" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">Verify on Provider Site <i class="fas fa-external-link-alt" style="margin-left: 0.4rem;"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function showCredentialModal(title, issuer, issueDate, expDate, credId, link) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalIssuer').innerText = issuer;
-            document.getElementById('modalIssueDate').innerText = issueDate;
-            document.getElementById('modalExpDate').innerText = expDate;
-            document.getElementById('modalCredId').innerText = credId;
-            document.getElementById('modalLink').href = link;
-            document.getElementById('credentialModal').style.display = 'flex';
-        }
-
-        function closeCredentialModal() {
-            document.getElementById('credentialModal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('credentialModal');
-            if (event.target === modal) {
-                closeCredentialModal();
-            }
-        };
-    </script>
 
     <footer class="footer">
         <div class="container">
@@ -241,4 +297,3 @@
 </body>
 
 </html>
-
