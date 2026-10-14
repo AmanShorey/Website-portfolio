@@ -66,9 +66,13 @@
                                 <i class="fab fa-github"></i> Source
                             </a>
                         </div>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1.25rem; align-items: start;">
-                            <img src="verity_screenshot.png" alt="Verity Project Screenshot" style="width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md);">
-                            <img src="verity_team.jpg" alt="HackUCD 2026 Team Photo" style="width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: var(--shadow-md);">
+                        <div class="verity-gallery-grid">
+                            <div class="verity-gallery-item screenshot-bg" onclick="openLightbox('verity_screenshot.png', 'Verity — Prototype Screenshot')">
+                                <img src="verity_screenshot.png" alt="Verity Project Screenshot">
+                            </div>
+                            <div class="verity-gallery-item photo-fit" onclick="openLightbox('verity_team.jpg', 'HackUCD 2026 Team Photo')">
+                                <img src="verity_team.jpg" alt="HackUCD 2026 Team Photo">
+                            </div>
                         </div>
                     </div>
 
@@ -247,7 +251,47 @@
             <p>&copy; 2026 Aman Shorey. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="imageLightbox" class="image-lightbox" onclick="closeLightbox(event)">
+        <button class="image-lightbox-close" aria-label="Close" onclick="closeLightbox()">&times;</button>
+        <div class="image-lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightboxImg" class="image-lightbox-img" src="" alt="">
+            <div id="lightboxCaption" class="image-lightbox-caption"></div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        function openLightbox(src, alt) {
+            const lightbox = document.getElementById('imageLightbox');
+            const img = document.getElementById('lightboxImg');
+            const caption = document.getElementById('lightboxCaption');
+            if (!lightbox || !img) return;
+            img.src = src;
+            img.alt = alt || '';
+            if (caption) caption.textContent = alt || '';
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(e) {
+            if (e && e.target && e.target.closest('.image-lightbox-content') && !e.target.classList.contains('image-lightbox-close')) {
+                return;
+            }
+            const lightbox = document.getElementById('imageLightbox');
+            if (lightbox) {
+                lightbox.classList.remove('active');
+            }
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 
 </html>
